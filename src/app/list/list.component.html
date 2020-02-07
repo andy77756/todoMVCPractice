@@ -1,0 +1,10 @@
+   <li>
+    <div class="view">
+    <input id="{{item.id}}" [checked]="item.isDone" class="toggle" type="checkbox" (mouseup)="handleChecked($event.target)">
+      <label>{{item.title}}</label>
+      <button class="destroy"></button>
+    </div>
+    <input class="edit">
+  </li>
+
+
