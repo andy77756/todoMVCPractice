@@ -1,13 +1,17 @@
 <section class="todoapp">
-  <app-header (postTitle)="doPostData($event)"></app-header>
+  <app-header
+    (postTitle)="doPostData($event)"
+    [allIsDone]="allIsDone"
+  >
+  </app-header>
   <section class="main">
-    <ul class="todo-list">
-      <app-list [item]="item"
-      (ChangeStatus)="doChangeStatus($event)"
-      (titleChanged)="doChangeStatus($event)"
-      (itemRemove)="doRemoveItem($event)"
-      *ngFor="let item of task;"></app-list>
-    </ul>
+    <app-list [item]="item" (ChangeStatus)="doChangeStatus($event)" (titleChanged)="doChangeStatus($event)"
+      (itemRemove)="doRemoveItem($event)" *ngFor="let item of task;"></app-list>
   </section>
-  <app-footer [count]="count" (clearComplete)="doClearAllComplete()"></app-footer>
+  <app-footer
+    [notIsDonecount]="notIsDonecount"
+    [isDoneCount]="isDoneCount"
+    [allCount]="allCount"
+    (clearComplete)="doClearAllComplete()">
+  </app-footer>
 </section>

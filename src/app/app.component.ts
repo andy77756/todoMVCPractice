@@ -12,7 +12,10 @@ export class AppComponent implements OnInit {
   title = 'doggy-training-test';
 
   task: Task[] = [];
-  count = 0;
+  allCount = 0;
+  notIsDonecount = 0;
+  isDoneCount = 0;
+  allIsDone = false;
 
   constructor(public datasrv: ListService) {
 
@@ -31,9 +34,16 @@ export class AppComponent implements OnInit {
   getNewData() {
     this.datasrv.getData().subscribe((result: Task[]) => {
       this.task = result;
-      this.count = result.filter( v => {
+      this.allCount = result.length;
+      this.notIsDonecount = result.filter( v => {
         return v.isDone === false;
       }).length;
+      this.isDoneCount = result.length - this.notIsDonecount;
+      if (this.notIsDonecount === 0) {
+        this.allIsDone = true;
+      } else {
+        this.allIsDone = false;
+      }
     });
   }
 

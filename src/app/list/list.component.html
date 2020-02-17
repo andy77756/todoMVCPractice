@@ -1,10 +1,12 @@
-<li [ngClass]="{'completed': item.isDone}" [ngClass]="{'editing': isEdit}">
-  <div class="view">
-    <input id="{{item.id}}" [checked]="item.isDone" class="toggle" type="checkbox"
-      (mouseup)="handleChecked($event.target)">
-    <label *ngIf="!isEdit" (dblclick)="isEdit=true">{{item.title}}</label>
-    <input *ngIf="isEdit" [value]="newtitle" (keyup.enter)="doEditTitle($event.target.value); isEdit=false;"
-      (keyup.escape)="$event.target.value = item.title; isEdit=false;">
-    <button class="destroy" *ngIf="!isEdit" (click)="doRemove(item.id)"></button>
-  </div>
-</li>
+<ul class="todo-list">
+  <li [ngClass]="{'completed': item.isDone}" [ngClass]="{'editing': isEdit}">
+    <div class="view">
+      <input id="{{item.id}}" [checked]="item.isDone" class="toggle" type="checkbox"
+        (mouseup)="handleChecked($event.target)">
+      <label *ngIf="!isEdit" (dblclick)="isEdit=true">{{item.title}}</label>
+      <input *ngIf="isEdit" [value]="newtitle" (keyup.enter)="doEditTitle($event.target.value); isEdit=false;"
+        (keyup.escape)="$event.target.value = item.title; isEdit=false;">
+      <button class="destroy" *ngIf="!isEdit" (click)="doRemove(item.id)"></button>
+    </div>
+  </li>
+</ul>

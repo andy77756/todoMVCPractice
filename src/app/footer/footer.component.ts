@@ -8,8 +8,11 @@ import { Task } from '../Task';
 })
 export class FooterComponent implements OnInit {
   @Input()
-  count = 0;
-  taskList: Task[] = [];
+  notIsDonecount ;
+  @Input()
+  isDoneCount;
+  @Input()
+  allCount;
 
   @Output()
   clearComplete = new EventEmitter();
@@ -20,6 +23,7 @@ export class FooterComponent implements OnInit {
   }
 
   handleClear() {
+    console.log(this.notIsDonecount);
     this.clearComplete.emit();
   }
 
