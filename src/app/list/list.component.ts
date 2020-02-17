@@ -13,16 +13,36 @@ export class ListComponent implements OnInit {
   @Output()
   ChangeStatus = new EventEmitter();
 
+  @Output()
+  titleChanged = new EventEmitter();
+
+  @Output()
+  itemRemove = new EventEmitter();
+
   id;
+  newtitle;
+  isEdit;
   constructor() { }
 
   ngOnInit() {
+    this.newtitle = this.item.title;
+    this.isEdit = false;
   }
 
   handleChecked(event: MouseEvent) {
     //console.log(this.item);
 
     this.ChangeStatus.emit({id: this.item.id, title: this.item.title, isDone: !event['checked']});
+  }
+
+  doEditTitle(ntitle) {
+
+    this.newtitle = ntitle;
+    this.titleChanged.emit({id: this.item.id, title: ntitle, isDone: this.item.isDone});
+  }
+
+  doRemove(id) {
+    this.itemRemove.emit(id);
   }
 
 }

@@ -43,7 +43,11 @@ export class AppComponent implements OnInit {
       this.getNewData();
     });
   }
-
+  doRemoveItem(id) {
+    this.datasrv.deleteData(id).subscribe( r => {
+      this.getNewData();
+    });
+  }
   doClearAllComplete() {
     this.task.filter( v => {
       return v.isDone === true;

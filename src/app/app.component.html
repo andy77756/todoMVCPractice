@@ -2,10 +2,12 @@
   <app-header (postTitle)="doPostData($event)"></app-header>
   <section class="main">
     <ul class="todo-list">
-      <app-list [item]="item" (ChangeStatus)="doChangeStatus($event)" *ngFor="let item of task;"></app-list>
+      <app-list [item]="item"
+      (ChangeStatus)="doChangeStatus($event)"
+      (titleChanged)="doChangeStatus($event)"
+      (itemRemove)="doRemoveItem($event)"
+      *ngFor="let item of task;"></app-list>
     </ul>
   </section>
   <app-footer [count]="count" (clearComplete)="doClearAllComplete()"></app-footer>
 </section>
-
-
